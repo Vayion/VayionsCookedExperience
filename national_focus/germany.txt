@@ -2204,7 +2204,6 @@ focus_tree = {
 			is_subject = no
 			NOT = { has_government = communism }
 			NOT = { is_in_faction_with = SOU }
-			date < 1940.5.1
 		}
 		bypass = {
 
@@ -2263,9 +2262,11 @@ focus_tree = {
 		
 		available = {
 			is_subject = no
+			date < 1940.5.1
+			has_army_manpower = { size > 999999 } #80 div	
 		}
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = GER_anti_comitern_pact
 		cost = 10
 		historical_ai = {
