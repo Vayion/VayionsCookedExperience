@@ -1347,7 +1347,7 @@ focus_tree = {
 		x = 0
 		y = 1
 		relative_position_id = GER_align_romania
-		cost = 2
+		cost = 10
 		
 		ai_will_do = {
 			factor = 1
@@ -1980,7 +1980,7 @@ focus_tree = {
 		}
 		cancel_if_invalid = no
 		x = 0
-		y = 1.5
+		y = 1
 		relative_position_id = GER_demand_memel
 		cost = 10
 		ai_will_do = {
@@ -2146,7 +2146,7 @@ focus_tree = {
 				}
 			}
 		}
-		x = -2
+		x = -1
 		y = 1
 		relative_position_id = GER_rhineland
 		cost = 10
@@ -2196,7 +2196,7 @@ focus_tree = {
 		id = GER_anti_comitern_pact
 		icon = GFX_goal_anti_comintern_pact
 		prerequisite = { focus = GER_rhineland  }
-		x = -3
+		x = -2
 		y = 2
 		relative_position_id = GER_rhineland
 		cost = 10
@@ -2262,9 +2262,11 @@ focus_tree = {
 		
 		available = {
 			is_subject = no
+			date < 1940.5.1
+			has_army_manpower = { size > 999999 } #80 div	
 		}
 		x = 0
-		y = 2
+		y = 1
 		relative_position_id = GER_anti_comitern_pact
 		cost = 10
 		historical_ai = {
@@ -2380,7 +2382,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = 3
+		x = 1
 		y = 2
 		relative_position_id = GER_rhineland
 		cost = 10
@@ -2626,7 +2628,8 @@ focus_tree = {
 	focus = {
 		id = GER_danzig_or_war
 		icon = GFX_goal_generic_demand_territory
-		prerequisite = { focus = GER_mol_rib_pact , focus = GER_end_of_czechoslovakia }
+		prerequisite = { focus = GER_mol_rib_pact }
+		prerequisite = { focus = GER_end_of_czechoslovakia }
 		will_lead_to_war_with = POL
 		available = {
 			is_subject = no
@@ -2680,9 +2683,9 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = -0.5
-		y = 3
-		relative_position_id = GER_demand_memel
+		x = 0
+		y = 1
+		relative_position_id = GER_mol_rib_pact
 		cost = 10
 		ai_will_do = {
 			factor = 10	
@@ -2942,7 +2945,7 @@ focus_tree = {
 		will_lead_to_war_with = LUX
 		will_lead_to_war_with = FRA
 		x = -1
-		y = 1.5
+		y = 1
 		relative_position_id = GER_war_with_france
 		cost = 3
 		ai_will_do = {
@@ -3345,10 +3348,10 @@ focus_tree = {
 	focus = {
 		id = GER_second_vienna_award
 		icon = GFX_goal_generic_cavalry
-		prerequisite = {focus = GER_end_of_czechoslovakia }
-		x = -1.5
-		y = 2
-		relative_position_id = GER_end_of_czechoslovakia
+		prerequisite = {focus = GER_align_hungary }
+		x = 0
+		y = 1
+		relative_position_id = GER_align_hungary
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -3357,6 +3360,7 @@ focus_tree = {
 			is_subject = no
 			has_army_manpower = { size > 749999 }
 			has_capitulated = no
+			date > 1939.1.1
 		}
 		bypass = {
 			OR = {
@@ -3414,60 +3418,12 @@ focus_tree = {
 		}
 	}
 
-	focus = {
-		id = GER_italy_ally
-		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = GER_second_vienna_award }
-		available = {
-			NOT = { has_war_with = ITA }
-			ITA = {
-				has_country_leader = {
-					character = ITA_benito_mussolini
-					ruling_only = yes
-				}
-			}
-			NOT = { has_country_flag = ENG_ditched_the_italians_flag }
-		}
-
-		bypass = {
-			OR = {
-				is_in_faction_with = ITA
-				has_war_with = ITA
-				NOT = { country_exists = ITA }
-				ITA = {
-					NOT = {
-						ITA = {
-							has_country_leader = {
-								character = ITA_benito_mussolini
-								ruling_only = yes
-							}
-						}
-					}
-				}
-			}
-		}
-
-		x = 0
-		y = 1
-		relative_position_id = GER_second_vienna_award
-		cost = 10
-		ai_will_do = {
-			factor = 10
-		}
-
-		available_if_capitulated = yes
-
-		completion_reward = {
-			ITA = {
-				add_opinion_modifier = { target = GER modifier = ger_ita_alliance_focus }
-			}
-		}
-	}
+	
 	
 	focus = {
 		id = GER_nationalist_spain_ally
 		icon = GFX_goal_generic_major_alliance
-		prerequisite = { focus = GER_italy_ally }
+		prerequisite = { focus = GER_thriumph_in_france }
 		available = {
 			if = {
 				limit = {
@@ -3493,12 +3449,15 @@ focus_tree = {
 					NOT = { has_completed_focus = SPA_join_the_allies }
 				}
 			}
-			FRA = {
-				OR = {
-					exists = no
-					has_capitulated = yes
-					has_government = fascism
+			OR = {
+				FRA = {
+					OR = {
+						exists = no
+						has_capitulated = yes
+						has_government = fascism
+					}
 				}
+				date > 1940.1.1
 			}
 		}
 		
@@ -3511,7 +3470,7 @@ focus_tree = {
 		#}
 		x = 0
 		y = 1
-		relative_position_id = GER_italy_ally
+		relative_position_id = GER_thriumph_in_france
 		cost = 10
 		ai_will_do = {
 			factor = 10
@@ -3631,7 +3590,7 @@ focus_tree = {
 		cancel_if_invalid = yes
 		will_lead_to_war_with = SWI
 		x = 1
-		y = 1.5
+		y = 1
 		relative_position_id = GER_war_with_france
 		cost = 3
 		ai_will_do = {
@@ -3673,7 +3632,7 @@ focus_tree = {
 		}
 		cancel_if_invalid = yes
 		x = 0
-		y = 3
+		y = 2
 		relative_position_id = GER_war_with_france
 		cost = 3
 		ai_will_do = {
@@ -4346,7 +4305,7 @@ focus_tree = {
 			}
 		}
 		cancel_if_invalid = no
-		x = 5
+		x = 3
 		y = 1
 		relative_position_id = GER_anschluss
 		cost = 10
