@@ -2262,7 +2262,7 @@ focus_tree = {
 		
 		available = {
 			is_subject = no
-			date < 1940.5.1
+			date > 1940.5.1
 			has_army_manpower = { size > 999999 } #80 div	
 		}
 		x = 0
@@ -3675,7 +3675,7 @@ focus_tree = {
 		bypass = {
 		}
 		cancel_if_invalid = yes
-		x = -1
+		x = -2
 		y = 1
 		relative_position_id = GER_thriumph_in_france
 		cost = 10
@@ -3760,7 +3760,7 @@ focus_tree = {
 		bypass = {
 		}
 		cancel_if_invalid = yes
-		x = 1
+		x = 2
 		y = 1
 		relative_position_id = GER_thriumph_in_france
 		cost = 10
