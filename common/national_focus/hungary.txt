@@ -251,7 +251,18 @@ focus_tree = {
 		available_if_capitulated = no
 
 		completion_reward = {
-			AUS = { country_event = { id = DOD_hungary.1 } }
+			ROM = {
+				every_unit_leader = {
+					set_nationality = HUN
+				}
+				ROM_king_michael = {
+					set_nationality = HUN
+				}
+			}
+			promote_character = { character = ROM_king_michael ideology = liberalism }
+			annex_country = { target = ROM transfer_troops = yes }
+			add_political_power = 75
+			add_stability = 0.05
 		}
 	}
 
@@ -262,16 +273,16 @@ focus_tree = {
 		mutually_exclusive = { focus = HUN_invite_romanian_king }
 		x = 1
 		y = 1
+			promote_character = HUN_otto_von_habsburg
 		relative_position_id = HUN_the_romanian_union
-		will_lead_to_war_with = AUS
-		will_lead_to_war_with = GER #if after Anschluss
+		will_lead_to_war_with = ROM
 		cost = 5
 
 		ai_will_do = {
 			factor = 70
 			modifier = {
 				factor = 0.5
-				AUS = { is_in_faction = yes }
+				ROM = { is_in_faction = yes }
 			}
 		}
 
