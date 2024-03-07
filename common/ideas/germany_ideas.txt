@@ -1,0 +1,22 @@
+ideas = {
+	
+	country =  {
+
+		GER_french_prisoners_in_factories = {
+
+			picture = ENG_the_war_to_end_all_wars
+
+			removal_cost = -1
+
+			allowed = {
+				always = true # Added via event
+			}
+			
+			modifier = {
+				stability_factor = -0.05
+				army_core_defence_factor = 0.05
+			}
+		}
+
+	}
+}
